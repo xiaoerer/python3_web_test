@@ -1,12 +1,16 @@
-configs={
-    'db':{
-        'host':'127.0.0.1',
-        'port':3306,
-        'user':'root',
-        'password':'123456'
-        'database':'python_jun'
+
+
+
+configs = {
+    'debug': True,
+    'db': {
+        'host': '127.0.0.1',
+        'port': 3306,
+        'user': 'root',
+        'password': '123456',
+        'db':'python_jun'
     },
-    'session':{
-        'secret':'pythonJun'
+    'session': {
+        'secret': 'xiaoer'
     }
 }
