@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head class="uk-height-1-1">
+	<meta charset="utf-8">
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/uikit.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/uikit-rtl.min.css">
+
+	<script type="text/javascript" src="/static/js/uikit.min.js"></script>
+	<script type="text/javascript" src="/static/js/uikit-icons.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/sha1.min.js"></script>
+    <script type="text/javascript" src="/static/js/vue.min.js"></script>
+    <script type="text/javascript" src="/static/js/xiaoer.js"></script>
+
+    <script type="text/javascript">
+    	$(function(){
+    		var vmAuth=new Vue({
+    			el:'#vm',
+    			date:{
+    				email:'',
+    				passwd:''
+    			},
+    			methods:{
+    				submit:function(event){
+    					event.preventDefault();
+    					var $form=$('#vm'),
+    					email=this.email.trim().toLowerCase(),
+    					data={
+    						email:email,
+    						passwd:this.passwd===''?'':CryptoJS.SHA1(email + ':' + this.passwd).toString()
+    					};
+    					$form.postJSON('/api/authenticate', data, function(err, result) {
+                    		if (! err) {
+                        		location.assign('/');
+                    		}
+                });
+    				}
+    			}
+    		});
+    	});
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
